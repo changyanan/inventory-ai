@@ -1,5 +1,6 @@
 package com.xuenan.inventoryai.config;
 
+import com.xuenan.inventoryai.ai.assistant.IntentAssistant;
 import com.xuenan.inventoryai.ai.assistant.InventoryAssistant;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.openai.OpenAiChatModel;
@@ -23,5 +24,11 @@ public class AiConfig {
     @Bean
     InventoryAssistant inventoryAssistant(ChatModel  chatModel){
         return AiServices.builder(InventoryAssistant.class).chatModel(chatModel).build();
+    }
+    @Bean
+    public IntentAssistant intentAssistant(ChatModel chatModel) {
+        return AiServices.builder(IntentAssistant.class)
+                .chatModel(chatModel)
+                .build();
     }
 }
